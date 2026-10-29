@@ -38,13 +38,23 @@ Email" value="<?php if(isset($_GET['search'])) echo $_GET['search']; ?>">
 <?php 
 if ($result->num_rows > 0) { 
 while($row = $result->fetch_assoc()) { 
-echo "<tr> 
-<td>{$row['id']}</td> 
-<td>{$row['name']}</td> 
-<td>{$row['email']}</td> 
-<td>{$row['phone']}</td> 
-<td>{$row['created_at']}</td> 
-</tr>"; 
+
+?>
+<tr>
+    <td><?php echo $row['id']; ?></td>
+    <td><?php echo $row['name']; ?></td>
+    <td><?php echo $row['email']; ?></td>
+    <td><?php echo $row['phone']; ?></td>
+    <td><?php echo $row['created_at']; ?></td>
+    <td>
+        <a href="update.php?id=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm">Edit</a>
+
+        <a href="delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm"
+           onclick="return confirm('Are you sure?');">Delete</a>
+    </td>
+</tr>
+<?php
+
 } 
 } else { 
 echo "<tr><td colspan='5'>No entries found</td></tr>"; 

@@ -25,15 +25,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("sss", $name, $email, $phone);
 
     if ($stmt->execute()) {
-        echo "Student added successfully!";
+
+        echo '<div class="alert alert-success" role="alert">
+        Entry submitted successfully!
+        </div>';
+
     } else {
+
         echo "Insert Error: " . $stmt->error;
+
     }
 
     $stmt->close();
     $conn->close();
 
 } else {
+
     echo "Please submit the form first.";
+
 }
+
 ?>
